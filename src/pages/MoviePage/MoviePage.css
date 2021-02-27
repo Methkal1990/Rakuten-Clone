@@ -1,0 +1,28 @@
+.moviePage {
+  height: 70vh;
+}
+.moviePage__movieBackground {
+  height: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.moviePage__movieBackground i {
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+}
+
+.moviePage__movieBackground i:hover{
+  color: yellow;
+  cursor: pointer;
+}
+
+.moviePage__movieDescription {
+  padding: 1rem 1rem 4rem 1rem;
+  background-color: #fff;
+  font-size: 0.9rem;
+}

@@ -1,15 +1,28 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import Header from './components/Header/Header.jsx';
-import ItemsContegory from './components/ItemsCategory/ItemsCategory.jsx';
+import HomePage from './pages/HomePage/HomePage.jsx';
+import MoviePage from './pages/MoviePage/MoviePage.jsx';
+import TrailerPage from './pages/TrailerPage/TrailerPage.jsx';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header />
-      <ItemsContegory/>
-    </div>
+      <Switch>
+        <Route exact path='/'>
+          <HomePage />
+        </Route>
+        <Route exact path='/movie'>
+          <MoviePage />
+        </Route>
+        <Route>
+          <TrailerPage/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

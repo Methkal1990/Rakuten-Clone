@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './Header.css';
 
 function Header() {
   return (
     <nav className='header'>
       <div className='header__navbar--left'>
-        <div className='header__logo'>Rakuten TV</div>
+        <Link to='/' className='header__logo'>
+          Rakuten TV
+        </Link>
         <ul className='header__options'>
           <li>CINEMA</li>
           <li>FREE</li>

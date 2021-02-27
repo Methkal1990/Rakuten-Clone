@@ -7,6 +7,10 @@
   justify-content: space-between;
   letter-spacing: -0.1px;
   margin: 0 auto;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
 }
 .header__navbar--left {
   display: flex;
@@ -68,7 +72,7 @@ li.header__button:hover {
 
 .header__responsive {
   background-color: #101010;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 3rem;
@@ -90,13 +94,12 @@ li.header__button:hover {
   .header__responsive {
     display: flex;
   }
-  .header__navbar--left {
-    display: none;
-  }
+  .header__options,
+  .header__search,
   .header__navbar--right {
     display: none;
   }
   .header {
-    background-color: #171717;
+    background-color: transparent;
   }
 }

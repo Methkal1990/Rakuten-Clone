@@ -10,16 +10,17 @@ import TrailerPage from './pages/TrailerPage/TrailerPage.jsx';
 function App() {
   return (
     <Router>
-      <Header />
       <Switch>
         <Route exact path='/'>
+          <Header />
           <HomePage />
         </Route>
-        <Route exact path='/movie'>
+        <Route exact path='/movie/:id'>
+          <Header />
           <MoviePage />
         </Route>
-        <Route>
-          <TrailerPage/>
+        <Route exact path='/trailer/:id'>
+          <TrailerPage />
         </Route>
       </Switch>
     </Router>

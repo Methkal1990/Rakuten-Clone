@@ -1,65 +1,69 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { fetchSingleMovie } from '../../actions';
 import './MoviePage.css';
 
-function MoviePage() {
+function MoviePage({ fetchSingleMovie, currentMovie }) {
+  const { id } = useParams();
   const history = useHistory();
+
+  console.log(currentMovie);
+
+  useEffect(() => {
+    fetchSingleMovie(id);
+  }, []);
+
   return (
-    <div className='moviePage'>
-      <div
-        className='moviePage__movieBackground'
-        style={{
-          backgroundImage:
-            "url('https://images-0.wuaki.tv/system/shots/193964/original/snapshot-1590663440-width1920-quality80.jpeg')",
-        }}
-      >
-        <i
-          className='fa fa-play-circle fa-3x'
-          aria-hidden='true'
-          onClick={() => history.push('/trailer')}
-        ></i>
-      </div>
-      <div className='moviePage__movieContent'>
-        <p className='moviePage__movieDescription'>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et incidunt
-          sint fugiat dicta quas molestiae, odit eos quos voluptas at fuga
-          inventore ab vitae eum delectus corrupti, perspiciatis quis
-          recusandae? Et ullam ea eveniet veritatis, voluptate alias adipisci
-          laboriosam vero iste voluptatum numquam delectus sapiente cumque nulla
-          omnis repellat? Dolore quam ipsa ex dolor blanditiis obcaecati ab
-          inventore saepe aliquid. Labore provident natus necessitatibus rerum
-          nam temporibus quaerat obcaecati beatae. Dicta, molestias accusamus
-          voluptates odio sapiente iusto facilis molestiae aperiam error ipsam
-          quisquam alias ipsa quis ullam dolorum repellendus quasi! Harum
-          eligendi voluptatibus incidunt amet magnam mollitia, dicta, sit
-          maiores autem officia iure, dignissimos aliquam eius voluptates omnis
-          ratione! Quisquam, ratione. Quos nam incidunt molestias enim qui
-          quibusdam obcaecati sequi? Provident blanditiis minima natus? Libero
-          repellat quae earum non possimus voluptatum odit officia unde animi
-          laboriosam voluptate nemo quisquam maxime, cumque odio commodi
-          praesentium accusamus eligendi repudiandae velit magni eius. Excepturi
-          molestiae, animi unde quas ea, dolorum maiores vel doloremque
-          accusantium a dolores expedita tempore. Suscipit, pariatur molestias
-          consectetur perferendis a consequuntur porro error illum hic, amet
-          quas quidem blanditiis. Dicta placeat expedita aspernatur iure sequi
-          dolorum, provident voluptas corporis nulla culpa quas modi! Hic iste
-          atque voluptas ab? Illum minus fugiat labore magnam enim fuga eius
-          tenetur sequi placeat. Odio id autem in iste at, corrupti quos optio
-          perspiciatis molestias inventore modi harum nulla assumenda
-          dignissimos omnis dolor rerum facilis quibusdam similique libero amet
-          architecto aliquid reprehenderit nobis? Reiciendis. Aut voluptas
-          eligendi vitae accusantium nisi ex ipsa facere, sequi quas iusto esse,
-          reprehenderit excepturi nihil repudiandae doloremque ab illum. Libero
-          sunt iure beatae velit soluta dicta laborum eius totam? Totam aperiam
-          nihil pariatur corrupti itaque accusantium fugit, similique numquam
-          quidem quaerat rerum natus, animi possimus modi. Itaque odio enim
-          sequi numquam laborum nihil, vero, cupiditate sunt veniam excepturi
-          totam.
-        </p>
-      </div>
-    </div>
+    <>
+      {currentMovie && currentMovie.id === id ? (
+        <div className='moviePage'>
+          <div
+            className='moviePage__movieBackground'
+            style={{
+              backgroundImage: `url(${currentMovie.images.snapshot})`,
+            }}
+          >
+            <div className='moviePage__head'>
+              <i
+                className='fa fa-play-circle fa-3x'
+                aria-hidden='true'
+                onClick={() => history.push(`/trailer/${id}`)}
+              ></i>
+              <h1>{currentMovie.title}</h1>
+            </div>
+          </div>
+          <div className='moviePage__movieContent'>
+            <ul className='moviePage__metadata'>
+              <li>
+              <i className="fa fa-eye" aria-hidden="true"></i>
+
+
+
+                {currentMovie.duration} minutes
+              </li>
+              <li>
+                <i className='fa fa-calendar' aria-hidden='true'></i>
+
+                {currentMovie.year}
+              </li>
+              <li>
+              <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {currentMovie.original_title}
+              </li>
+            </ul>
+            <p className='moviePage__movieDescription'>{currentMovie.plot}</p>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 
-export default MoviePage;
+const mapStateToProps = (state) => ({
+  currentMovie: state.movies.currentMovie,
+});
+
+export default connect(mapStateToProps, { fetchSingleMovie })(MoviePage);

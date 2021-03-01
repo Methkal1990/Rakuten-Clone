@@ -1,81 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchMoviesLists } from '../../actions';
 import Slider from '../Slider/Slider.jsx';
 import './CategoriesContainer.css';
 
-function CategoriesContainer() {
-  const [movies, setmovies] = useState([
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-    {
-      image:
-        'https://images-1.wuaki.tv/system/artworks/25785/original/mud-1611332921-width217-quality80.jpeg',
-      title: 'Mud',
-    },
-  ]);
+function CategoriesContainer({ fetchMoviesLists, moviesLists }) {
+  useEffect(() => {
+    fetchMoviesLists();
+  }, []);
+
   return (
     <div className='categoriesContainer'>
-      <Slider movies={movies}/>
-      <Slider movies={movies}/>
+      {moviesLists.length &&
+        moviesLists.map((list) => {
+          const { data: movies } = list.contents;
+          const renderContent = movies.length ? (
+            <Slider
+              movies={movies}
+              key={list.id}
+              sliderTitle={list.short_name}
+            />
+          ) : null;
+          return renderContent;
+        })}
     </div>
   );
 }
 
-export default CategoriesContainer;
+const mapStateToProps = (state) => ({ moviesLists: state.movies.moviesLists });
+
+export default connect(mapStateToProps, { fetchMoviesLists })(CategoriesContainer);

@@ -4,14 +4,15 @@ import { useHistory } from 'react-router-dom';
 import './SliderItem.css';
 
 const SliderItem = ({ movie, width }) => {
+  const image = movie.images.artwork
   const history = useHistory();
   return (
     <div
       className='slider-item'
-      style={{ width: `${width}%` }}
-      onClick={() => history.push('/movie')}
+      style={{ width: `${width}px` }}
+      onClick={() => history.push(`/movie/${movie.id}`)}
     >
-      <img className='slider-image' src={movie.image} alt={movie.title} />
+      <img className='slider-image' src={image} alt={movie.title} />
     </div>
   );
 };

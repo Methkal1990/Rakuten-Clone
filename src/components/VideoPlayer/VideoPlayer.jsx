@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
 
-import './VideoPlayer.css'
+import { streamVideo } from '../../actions';
 
-function VideoPlayer() {
+import './VideoPlayer.css';
+
+function VideoPlayer({ streamVideo, streaming }) {
+  const { id } = useParams();
+  const { url: videoUrl } = streaming ? streaming.stream_infos[0] : {};
+  useEffect(() => {
+    streamVideo(id);
+  }, []);
+
   return (
     <div className='videoPlayer'>
-      <video autoPlay src='https://www.youtube.com/watch?v=2m9IFlz2iYo' controls></video>
+      <Link to={`/movie/${id}`}>
+        <i className='fa fa-arrow-left' aria-hidden='true'></i>
+      </Link>
+      <video autoPlay src={videoUrl} controls></video>
     </div>
   );
 }
 
-export default VideoPlayer;
+const mapStateToProps = (state) => ({
+  streaming: state.movies.streamVideo,
+});
+
+export default connect(mapStateToProps, { streamVideo })(VideoPlayer);

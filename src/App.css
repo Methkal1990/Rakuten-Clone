@@ -5,7 +5,7 @@
   outline: none;
 }
 body {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   background-color: #171717;
 }
 
@@ -13,8 +13,7 @@ li {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: #fff;
 }
-

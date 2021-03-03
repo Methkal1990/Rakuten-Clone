@@ -6,7 +6,7 @@ This can be done easily by running:
 
 However, you may face an issue with the dependency [`@wojtekmaj/enzyme-adapter-react-17`](https://www.npmjs.com/package/@wojtekmaj/enzyme-adapter-react-17) which is the enzyme adaptor for testing purposes. As their documentation says:
 
->>>enzyme's dependencies have not yet been updated to declare React 17 in peerDependencies. You need to add --legacy-peer-deps to the install command for it to work >>>correctly.
+> > > enzyme's dependencies have not yet been updated to declare React 17 in peerDependencies. You need to add --legacy-peer-deps to the install command for it to work >>>correctly.
 
 To resolve this just run `--legacy-peer-deps`
 
@@ -37,9 +37,11 @@ The package.json file includes jest configurations for handling issues related t
 Components lives in two folder at the src/:
 
 #### Pages
+
 container components that renders the rest of the components in every page.
 
 #### Componenets
+
 - CategoriesContainer : Container component that renders all the Slider components upon fetching from `rakuten` api and renders an ErrorMessage in case of any fetching error
 - ErrorMessage : renders a friendly error text in case of network error
 - Header : the app header that have different view depending on the screen size
@@ -47,8 +49,8 @@ container components that renders the rest of the components in every page.
 - Slider : renders SlideItem components and a title for a specific category. responsive depending on the screen size
 - VideoPlayer : renders a video trailer of a specifc movie and ErrorMessage in case of error.
 
-
 ## Backlog
+
 - Add typescript to the app
 - Using more advance styling tools like sass, scss or styled components.
 - Integration tests

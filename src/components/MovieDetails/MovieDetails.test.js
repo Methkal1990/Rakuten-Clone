@@ -25,7 +25,7 @@ afterEach(() => {
 
 it('renders H1 as a movie title', () => {
   expect(wrapped.find('h1').length).toEqual(1);
-  expect(wrapped.find('h1').text()).toContain('matrix')
+  expect(wrapped.find('h1').text()).toContain('matrix');
 });
 
 it('renders 4 fontawesome icons tag I', () => {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 
 import { fetchMoviesLists } from '../../actions';
 import Slider from '../Slider/Slider.jsx';
@@ -44,6 +44,6 @@ export default connect(mapStateToProps, { fetchMoviesLists })(
 
 CategoriesContainer.propTypes = {
   fetchMoviesLists: PropTypes.func,
-  moviesLists : PropTypes.array,
-  error: PropTypes.string
-}
+  moviesLists: PropTypes.array,
+  error: PropTypes.string,
+};

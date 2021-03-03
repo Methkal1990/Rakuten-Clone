@@ -36,7 +36,12 @@ export const initialState = {
       },
     ],
     error: 'an error occured',
-    currentMovie: {title: "matrix", images: {snapshot: "image.jpg"}, duration: 100, year: 2000, original_title: "matrix"}
+    currentMovie: {
+      title: 'matrix',
+      images: { snapshot: 'image.jpg' },
+      duration: 100,
+      year: 2000,
+      original_title: 'matrix',
+    },
   },
 };
-

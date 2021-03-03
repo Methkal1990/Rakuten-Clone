@@ -24,5 +24,5 @@ afterEach(() => {
 it('renders a NAV element, 3 ULs, 1 Link/Logo', () => {
   expect(wrapped.find('nav').length).toEqual(1);
   expect(wrapped.find('ul').length).toEqual(3);
-  expect(wrapped.find(Link).length).toEqual(1)
+  expect(wrapped.find(Link).length).toEqual(1);
 });

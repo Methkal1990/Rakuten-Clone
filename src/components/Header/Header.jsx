@@ -12,7 +12,7 @@ function Header({ clearError }) {
     <nav className='header'>
       <div className='header__navbar--left'>
         <Link to='/' onClick={clearError}>
-          <img src={logo} alt='Rakuten logo' className="header__logo" />
+          <img src={logo} alt='Rakuten logo' className='header__logo' />
         </Link>
         <ul className='header__options'>
           <li>CINEMA</li>
@@ -54,5 +54,5 @@ function Header({ clearError }) {
 export default connect(null, { clearError })(Header);
 
 Header.propTypes = {
-  clearError: PropTypes.func
-}
+  clearError: PropTypes.func,
+};

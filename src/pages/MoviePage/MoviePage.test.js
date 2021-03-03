@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
-import React from 'react'
+import React from 'react';
 
-import MoviePage from './MoviePage.jsx'
-import MovieDetails from '../../components/MovieDetails/MovieDetails.jsx'
+import MoviePage from './MoviePage.jsx';
+import MovieDetails from '../../components/MovieDetails/MovieDetails.jsx';
 
 it('renders a MovieDetails component', () => {
   const wrapped = shallow(<MoviePage />);

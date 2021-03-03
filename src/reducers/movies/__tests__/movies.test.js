@@ -23,9 +23,8 @@ it('handles actions of type FETCH_SINGLE_MOVIE', () => {
 
   const newState = moviesReducer({ currentMovie: null }, action);
 
-  expect(newState).toEqual({currentMovie: "movie1"})
+  expect(newState).toEqual({ currentMovie: 'movie1' });
 });
-
 
 it('handles action with unknown type', () => {
   const newState = moviesReducer({}, { type: 'LKAFDSJLKAFD' });

@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
-import React from 'react'
+import React from 'react';
 
-import TrailerPage from './TrailerPage.jsx'
+import TrailerPage from './TrailerPage.jsx';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer.jsx';
 
 it('renders a VideoPlayer component', () => {

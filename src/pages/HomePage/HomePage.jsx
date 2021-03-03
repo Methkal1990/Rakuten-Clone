@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CategoriesContainer from '../../components/CategoriesContainer/CategoriesContainer.jsx';
-import './HomePage.css'
+import './HomePage.css';
 
 function HomePage() {
   return (

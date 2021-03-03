@@ -1,18 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import './ErrorMessage.css'
+import './ErrorMessage.css';
 
-function ErrorMessage({message}) {
-  return (
-    <p className="errorMessage">
-      {message}
-    </p>
-  )
+function ErrorMessage({ message }) {
+  return <p className='errorMessage'>{message}</p>;
 }
 
-export default ErrorMessage
+export default ErrorMessage;
 
 ErrorMessage.propTypes = {
-  message: PropTypes.string
-}
+  message: PropTypes.string,
+};

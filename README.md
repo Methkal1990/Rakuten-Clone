@@ -50,6 +50,7 @@ container components that renders the rest of the components in every page.
 
 ## Backlog
 - Add typescript to the app
+- Using more advance styling tools like sass, scss or styled components.
 - Integration tests
 - testing Redux action creators
 - add more features like auth, search ..etc

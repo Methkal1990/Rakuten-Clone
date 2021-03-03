@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import './Slider.css';
 import SliderItem from './SliderItem/SliderItem.jsx';
@@ -66,3 +67,8 @@ function Slider({ movies, sliderTitle }) {
 }
 
 export default Slider;
+
+Slider.propTypes = {
+  movies: PropTypes.array,
+  sliderTitle: PropTypes.string,
+};

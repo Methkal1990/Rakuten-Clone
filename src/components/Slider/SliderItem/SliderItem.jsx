@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 import './SliderItem.css';
 
@@ -18,3 +19,8 @@ const SliderItem = ({ movie, width }) => {
 };
 
 export default SliderItem;
+
+SliderItem.propTypes = {
+  movie: PropTypes.object,
+  width: PropTypes.number
+};

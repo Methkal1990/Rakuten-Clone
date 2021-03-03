@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './ErrorMessage.css'
 
@@ -11,3 +12,7 @@ function ErrorMessage({message}) {
 }
 
 export default ErrorMessage
+
+ErrorMessage.propTypes = {
+  message: PropTypes.string
+}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchSingleMovie } from '../../actions';
 import './MovieDetails.css';
@@ -37,10 +38,7 @@ function MovieDetails({ fetchSingleMovie, currentMovie, error }) {
           <div className='movieDetails__movieContent'>
             <ul className='movieDetails__metadata'>
               <li>
-              <i className="fa fa-eye" aria-hidden="true"></i>
-
-
-
+                <i className='fa fa-eye' aria-hidden='true'></i>
                 {currentMovie.duration} minutes
               </li>
               <li>
@@ -49,21 +47,32 @@ function MovieDetails({ fetchSingleMovie, currentMovie, error }) {
                 {currentMovie.year}
               </li>
               <li>
-              <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
-              {currentMovie.original_title}
+                <i className='fa fa-exclamation-circle' aria-hidden='true'></i>
+                {currentMovie.original_title}
               </li>
             </ul>
-            <p className='movieDetails__movieDescription'>{currentMovie.plot}</p>
+            <p className='movieDetails__movieDescription'>
+              {currentMovie.plot}
+            </p>
           </div>
         </div>
       ) : null}
-      {error && <ErrorMessage message="Either the movie doesn't exist or you may need to try again"/>}
+      {error && (
+        <ErrorMessage message="Either the movie doesn't exist or you may need to try again" />
+      )}
     </>
   );
 }
 
 const mapStateToProps = (state) => ({
-  currentMovie: state.movies.currentMovie, error: state.movies.error,
+  currentMovie: state.movies.currentMovie,
+  error: state.movies.error,
 });
 
 export default connect(mapStateToProps, { fetchSingleMovie })(MovieDetails);
+
+MovieDetails.propTypes = {
+  fetchSingleMovie: PropTypes.func,
+  currentMovie: PropTypes.object,
+  error: PropTypes.string,
+};

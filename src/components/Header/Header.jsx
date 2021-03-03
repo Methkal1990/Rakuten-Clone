@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { clearError } from '../../actions';
 import './Header.css';
@@ -51,3 +52,7 @@ function Header({ clearError }) {
 }
 
 export default connect(null, { clearError })(Header);
+
+Header.propTypes = {
+  clearError: PropTypes.func
+}

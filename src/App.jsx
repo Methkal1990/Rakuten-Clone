@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage.jsx';
 import MoviePage from './pages/MoviePage/MoviePage.jsx';
 import TrailerPage from './pages/TrailerPage/TrailerPage.jsx';
 import history from './history.js';
+import NotFound from './pages/NotFound/NotFound.jsx';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
         </Route>
         <Route exact path='/trailer/:id'>
           <TrailerPage />
+        </Route>
+        <Route>
+        <Header />
+          <NotFound/>
         </Route>
       </Switch>
     </Router>

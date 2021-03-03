@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "test": "jest --detectOpenHandles --watch"
+    "test": "jest --detectOpenHandles --watchAll"
   },
   "keywords": [],
   "author": "",

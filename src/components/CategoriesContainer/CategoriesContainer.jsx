@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { fetchMoviesLists } from '../../actions';
 import Slider from '../Slider/Slider.jsx';
 import './CategoriesContainer.css';
+import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx';
 
-function CategoriesContainer({ fetchMoviesLists, moviesLists }) {
+function CategoriesContainer({ fetchMoviesLists, moviesLists, error }) {
   useEffect(() => {
     fetchMoviesLists();
   }, []);
@@ -24,10 +25,18 @@ function CategoriesContainer({ fetchMoviesLists, moviesLists }) {
           ) : null;
           return renderContent;
         })}
+      {error && (
+        <ErrorMessage message='Failed to load movies, Please, try again...' />
+      )}
     </div>
   );
 }
 
-const mapStateToProps = (state) => ({ moviesLists: state.movies.moviesLists });
+const mapStateToProps = (state) => ({
+  moviesLists: state.movies.moviesLists,
+  error: state.movies.error,
+});
 
-export default connect(mapStateToProps, { fetchMoviesLists })(CategoriesContainer);
+export default connect(mapStateToProps, { fetchMoviesLists })(
+  CategoriesContainer
+);

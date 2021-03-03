@@ -3,6 +3,8 @@ import {
   FETCH_MOVIES_LISTS,
   FETCH_SINGLE_MOVIE,
   STREAM_VIDEO,
+  HANDLE_ERROR,
+  CLEAR_ERROR,
 } from './types.js';
 
 export const fetchMoviesLists = () => async (dispatch, getState) => {
@@ -19,27 +21,49 @@ export const fetchMoviesLists = () => async (dispatch, getState) => {
   for (const cat of categories) {
     promises.push(rakuten.fetchMoviesLists(cat));
   }
-  const response = await Promise.all(promises);
-
-  dispatch({
-    type: FETCH_MOVIES_LISTS,
-    payload: response,
-  });
+  try {
+    const response = await Promise.all(promises);
+    dispatch({
+      type: FETCH_MOVIES_LISTS,
+      payload: response,
+    });
+  } catch (error) {
+    dispatch({
+      type: HANDLE_ERROR,
+      payload: error.message,
+    });
+  }
 };
 
 export const fetchSingleMovie = (id) => async (dispatch, getState) => {
-  const response = await rakuten.fetchSingleMovie(id);
-  dispatch({
-    type: FETCH_SINGLE_MOVIE,
-    payload: response,
-  });
+  try {
+    const response = await rakuten.fetchSingleMovie(id);
+    dispatch({
+      type: FETCH_SINGLE_MOVIE,
+      payload: response,
+    });
+  } catch (error) {
+    dispatch({
+      type: HANDLE_ERROR,
+      payload: error.message,
+    });
+  }
 };
 
 export const streamVideo = (id) => async (dispatch, getState) => {
-  const response = await rakuten.streamVideo(id);
+  try {
+    const response = await rakuten.streamVideo(id);
 
-  dispatch({
-    type: STREAM_VIDEO,
-    payload: response,
-  });
+    dispatch({
+      type: STREAM_VIDEO,
+      payload: response,
+    });
+  } catch (error) {
+    dispatch({
+      type: HANDLE_ERROR,
+      payload: error.message,
+    });
+  }
 };
+
+export const clearError = () => ({ type: CLEAR_ERROR });

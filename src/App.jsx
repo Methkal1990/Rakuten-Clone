@@ -1,15 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import MoviePage from './pages/MoviePage/MoviePage.jsx';
 import TrailerPage from './pages/TrailerPage/TrailerPage.jsx';
+import history from './history.js';
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route exact path='/'>
           <Header />

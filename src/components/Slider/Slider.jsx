@@ -47,7 +47,7 @@ function Slider({ movies, sliderTitle }) {
       <h2 className='slider__title'>{sliderTitle}</h2>
       {prevNextCounter ? (
         <div className='slider__prev' onClick={handlePrev}>
-        <i className="fa fa-chevron-left" aria-hidden="true"></i>
+          <i className='fa fa-chevron-left' aria-hidden='true'></i>
         </div>
       ) : null}
 
@@ -58,7 +58,7 @@ function Slider({ movies, sliderTitle }) {
       </div>
       {prevNextCounter >= 0 && prevNextCounter < toSlide ? (
         <div className='slider__next' onClick={handleNext}>
-        <i className="fa fa-chevron-right" aria-hidden="true"></i>
+          <i className='fa fa-chevron-right' aria-hidden='true'></i>
         </div>
       ) : null}
     </div>

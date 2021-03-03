@@ -2,12 +2,15 @@ import {
   FETCH_MOVIES_LISTS,
   FETCH_SINGLE_MOVIE,
   STREAM_VIDEO,
+  HANDLE_ERROR,
+  CLEAR_ERROR,
 } from '../../actions/types.js';
 
 const initialState = {
   moviesLists: [],
   currentMovie: null,
   streamVideo: null,
+  error: null,
 };
 
 export default (state = initialState, action) => {
@@ -26,6 +29,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         streamVideo: action.payload.data.data,
+      };
+    case HANDLE_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
       };
     default:
       return state;

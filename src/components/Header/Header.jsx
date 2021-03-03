@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { clearError } from '../../actions';
 import './Header.css';
+import logo from '../../assets/logo.png';
 
-function Header() {
+function Header({ clearError }) {
   return (
     <nav className='header'>
       <div className='header__navbar--left'>
-        <Link to='/' className='header__logo'>
-          Rakuten TV
+        <Link to='/' onClick={clearError}>
+          <img src={logo} alt='Rakuten logo' className="header__logo" />
         </Link>
         <ul className='header__options'>
           <li>CINEMA</li>
@@ -47,4 +50,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default connect(null, { clearError })(Header);

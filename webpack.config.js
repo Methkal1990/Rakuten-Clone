@@ -1,7 +1,8 @@
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: ['@babel/polyfill', path.resolve(__dirname, './src/index.js')],
   module: {
     rules: [
       {
@@ -23,7 +24,15 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(jpe?g|png|svg)$/,
+        use: 'file-loader',
+      },
     ],
+  },
+  output: {
+    path: path.resolve(__dirname, './build'),
+    filename: 'bundle.js',
   },
   devServer: {
     compress: true,
@@ -33,5 +42,6 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
     }),
+    webpack.optimize.ModuleConcatenationPlugin()
   ],
 };

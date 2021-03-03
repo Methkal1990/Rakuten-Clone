@@ -40,3 +40,16 @@ Components lives in two folder at the src/:
 container components that renders the rest of the components in every page.
 
 #### Componenets
+- CategoriesContainer : Container component that renders all the Slider components upon fetching from `rakuten` api and renders an ErrorMessage in case of any fetching error
+- ErrorMessage : renders a friendly error text in case of network error
+- Header : the app header that have different view depending on the screen size
+- MovieDetails : detailed information about a specific movie and will render an ErrorMessage in case of error
+- Slider : renders SlideItem components and a title for a specific category. responsive depending on the screen size
+- VideoPlayer : renders a video trailer of a specifc movie and ErrorMessage in case of error.
+
+
+## Backlog
+- Add typescript to the app
+- Integration tests
+- testing Redux action creators
+- add more features like auth, search ..etc
